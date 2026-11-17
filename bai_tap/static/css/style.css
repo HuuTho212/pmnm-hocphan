@@ -1,0 +1,12 @@
+h1 {
+  color: red;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+.navbar-nav .nav-link.active {
+  color: blue; ;
+  font-weight: bold;
+}

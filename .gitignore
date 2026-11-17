@@ -1,8 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
-.gitignore
 Luyen_Tap/
 vd_template.py
-static/
-templates/Ql_sách/
+Ql_s*ch/

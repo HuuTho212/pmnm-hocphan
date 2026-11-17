@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    min-width: 560px;
+    border: 1px solid #999;
+}
+
+th,td {
+    border: 1px solid #999;
+    padding: 6px 12px;
+}
+
+.diem-kem {
+    background: #ffd6d6;
+}
