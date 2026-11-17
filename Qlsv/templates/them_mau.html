@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Thêm dữ liệu mẫu{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Thêm dữ liệu mẫu</h2>
+
+{% if message %}
+    <div class="alert alert-warning">{{ message }}</div>
+{% else %}
+    <div class="alert alert-success">
+        Đã thêm <strong>{{ students|length }}</strong> sinh viên.
+        id của An: trước commit = <strong>{{ before }}</strong>,
+        sau commit = <strong>{{ after }}</strong>
+    </div>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-primary">
+            <tr><th>ID</th><th>MSSV</th><th>Họ tên</th><th>GPA</th></tr>
+        </thead>
+        <tbody>
+            {% for sv in students %}
+            <tr>
+                <td>{{ sv.id }}</td>
+                <td>{{ sv.mssv }}</td>
+                <td>{{ sv.name }}</td>
+                <td>{{ sv.gpa }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}

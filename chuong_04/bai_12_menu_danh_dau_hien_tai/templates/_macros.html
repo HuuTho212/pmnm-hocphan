@@ -1,0 +1,6 @@
+{# Macro menu gọi is_active (biến của context processor) #}
+{% macro menu_items(menu) -%}
+{% for endpoint, label in menu %}
+<li class="nav-item"><a class="nav-link {{ is_active(endpoint) }}" href="{{ url_for(endpoint) }}">{{ label }}</a></li>
+{% endfor %}
+{%- endmacro %}

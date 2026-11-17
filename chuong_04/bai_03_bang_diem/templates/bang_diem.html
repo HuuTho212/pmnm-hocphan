@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Bảng điểm</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+<body>
+  <h1>Bảng điểm</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã SV</th>
+        <th>Họ tên</th>
+        <th>Điểm</th>
+        <th>Xếp loại</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+      <tr {% if s.diem < 5 %}class="diem-kem"{% endif %}>
+        <td>{{ loop.index }}</td>
+        <td>{{ s.ma }}</td>
+        <td>{{ s.ten }}</td>
+        <td>{{ s.diem }}</td>
+        <td>
+          {% if s.diem >= 8 %}Giỏi
+          {% elif s.diem >= 6.5 %}Khá
+          {% elif s.diem >= 5 %}Trung bình
+          {% else %}Không đạt{% endif %}
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">Chưa có dữ liệu.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% if students %}
+  <p>Sĩ số: {{ students|length }}</p>
+  <p>Điểm trung bình: {{ (students|sum(attribute="diem") / students|length)|round(2) }}</p>
+  {% endif %}
+</body>
+</html>

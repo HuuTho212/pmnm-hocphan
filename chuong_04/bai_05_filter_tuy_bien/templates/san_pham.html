@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+
+<body>
+    <h1>Danh sách sản phẩm</h1>
+    <table>
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Ngày nhập</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.ten }}</td>
+            <td class="so">{{ p.gia|vnd }}</td>
+            <td>{{ p.nhap|ngay|default("chưa rõ", true) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><strong>Tổng giá trị: {{ products|sum(attribute="gia")|vnd }}</strong></p>
+</body>
+
+</html>

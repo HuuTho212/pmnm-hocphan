@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Học vấn{% endblock %}
+{% block content %}
+<h1 class="mb-3">Học vấn</h1>
+<table class="table table-striped">
+  <thead><tr><th>Thời gian</th><th>Nơi học</th><th>Ngành</th></tr></thead>
+  <tbody>
+    {% for e in education %}
+    <tr><td>{{ e.nam }}</td><td>{{ e.noi }}</td><td>{{ e.nganh }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

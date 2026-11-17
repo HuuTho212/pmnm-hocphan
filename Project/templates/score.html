@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 480px;">
+    <form action="/score" method="post">
+        <div class="mb-3">
+            <label>Chuyên cần (10%)</label>
+            <input type="text" name="cc" class="form-control {% if errors.cc %}is-invalid{% endif %}" value="{{diem_cc}}">
+            <div class="invalid-feedback">{{errors.cc}}</div>
+        </div>
+
+        <div class="mb-3">
+            <label>Giữa kỳ (30%)</label>
+            <input type="text" name="gk" class="form-control {% if errors.gk %}is-invalid{% endif %}" value="{{diem_gk}}">
+            <div class="invalid-feedback">{{errors.gk}}</div>
+        </div>
+
+        <div class="mb-3">
+            <label>Cuối kỳ (60%)</label>
+            <input type="text" name="ck" class="form-control {% if errors.ck %}is-invalid{% endif %}" value="{{diem_ck}}">
+            <div class="invalid-feedback">{{errors.ck}}</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" >Tính Điểm</button>
+    </form>
+
+    {% if result %}
+    <div class="mt-4">
+        <strong>Điểm học phần và xếp loại: {{result.diem}}</strong> · <strong>{{ result.rank }}</strong>
+        {% if result.note %} ( {{ result.note }} ){% endif %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

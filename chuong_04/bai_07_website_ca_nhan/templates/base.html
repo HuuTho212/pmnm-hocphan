@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Giới thiệu{% endblock %} - {{ owner.ho_ten }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('about') }}">{{ owner.ho_ten }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+              aria-controls="menu" aria-expanded="false" aria-label="Mở menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link {{ 'active' if request.endpoint == 'about' }}" href="{{ url_for('about') }}">Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link {{ 'active' if request.endpoint == 'hoc_van' }}" href="{{ url_for('hoc_van') }}">Học vấn</a></li>
+          <li class="nav-item"><a class="nav-link {{ 'active' if request.endpoint == 'du_an' }}" href="{{ url_for('du_an') }}">Dự án</a></li>
+          <li class="nav-item"><a class="nav-link {{ 'active' if request.endpoint == 'lien_he' }}" href="{{ url_for('lien_he') }}">Liên hệ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4 flex-grow-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-top py-3 text-center text-muted small">
+    &copy; 2026 {{ owner.ho_ten }} · {{ owner.email }}
+  </footer>
+</body>
+</html>

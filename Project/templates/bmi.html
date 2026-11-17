@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 480px;">
+
+    <form action="/bmi" method="post">
+        <div class="mb-3">
+            <label class="form-label">Chiều cao (cm)</label>
+            <input type="text" name="height" value="{{ height }}"
+                   class="form-control {% if errors.height %}is-invalid{% endif %}">
+            <div class="invalid-feedback">{{ errors.height }}</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cân nặng (kg)</label>
+            <input type="text" name="weight" value="{{ weight }}"
+                   class="form-control {% if errors.weight %}is-invalid{% endif %}">
+            <div class="invalid-feedback">{{ errors.weight }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Tính BMI</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-{{ result.color }} mt-4">
+        <strong>{{ result.bmi }}</strong> · {{ result.response }}<br>
+        Cân nặng nên có: {{ result.min_weight }} ~ {{ result.max_weight }} kg
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

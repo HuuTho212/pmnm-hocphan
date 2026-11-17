@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 480px;">
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <label class="form-label">Tài khoản</label>
+            <input type="text" name="username" value="{{ height }}"
+                   class="form-control {% if errors.height %}is-invalid{% endif %}">
+            <div class="invalid-feedback">{{ errors.height }}</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mật khẩu</label>
+            <input type="text" name="weight" value="{{ weight }}"
+                   class="form-control {% if errors.weight %}is-invalid{% endif %}">
+            <div class="invalid-feedback">{{ errors.weight }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </form>
+</div>
+
+
+{% endblock %}

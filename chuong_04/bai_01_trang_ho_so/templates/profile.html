@@ -1,0 +1,21 @@
+{% set nam_hien_tai = 2026 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ho_ten}}</title>
+</head>
+<body>
+    <h1>{{ho_ten}}</h1>
+    <p>Năm sinh: {{nam_sinh}}</p>
+    <p>Tuổi: {{nam_hien_tai - nam_sinh}}</p>
+    <p>Ngành: {{nganh}}</p>
+    <h2>Kỹ năng:</h2>
+    <ul>
+        {% for skill in skills %}
+        <li>{{skill}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

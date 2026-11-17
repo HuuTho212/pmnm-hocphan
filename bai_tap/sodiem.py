@@ -2,7 +2,7 @@ import csv
 import io
 from pydoc import html
 
-from flask import Flask, Response, abort, redirect, url_for, request
+from flask import Flask, Response, abort, redirect, render_template, url_for, request
 
 app = Flask(__name__)
 
@@ -32,16 +32,11 @@ STUDENT = {
 def index():
     total_students = len(STUDENT)
     unique_classes = len(set(s['lop'] for s in STUDENT.values()))
-    return f"""
-    <h1>Trang chủ</h1>
-    <p>Tổng số sinh viên: {total_students}</p>
-    <p>Số lớp (không trùng): {unique_classes}</p>
-    
-    <ul>
-        <li><a href="{url_for('students_list')}">Danh sách sinh viên</a></li>
-        <li><a href="{url_for('api_students')}">API Sinh viên</a></li>
-    </ul>
-    """
+    return render_template("luyentap/templates/sodiem.html",
+                           total_students=total_students,
+                           unique_classes=unique_classes,
+                           danhsachsv=url_for("students_list")
+                           )
 
 @app.route("/students")
 def students_list():
